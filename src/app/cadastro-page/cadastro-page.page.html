@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item lines="full">
+      <ion-label>Imagem</ion-label>
+    <input #fileInput type="file" id="file-input" (change)="onImageLoad($event)" name="files" />
+  </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+      Nome é obrigatório.
+    </span>
+   
+    <ion-item lines="full">
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input formControlName="description" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.description.errors?.required">
+      Descrição é obrigatório.
+    </span>
+     
+    <ion-item lines="full">
+      <ion-label position="floating">Genero</ion-label>
+      <ion-input formControlName="genre" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.genre.errors?.required">
+      Genero é obrigatório.
+    </span>
+    <ion-item lines="full">
+      <ion-label position="floating">Autor</ion-label>
+      <ion-input formControlName="author" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.author.errors?.required">
+      Autor é obrigatório.
+    </span>
+    <ion-item lines="full">
+      <ion-label position="floating">Nota</ion-label>
+      <ion-input maxlength="3" formControlName="note" type="text" required></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.note.errors?.required">
+     Nota é obrigatório.
+    </span>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.note.errors?.pattern">
+    Apenas valores númericos são permitidos.
+    </span>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

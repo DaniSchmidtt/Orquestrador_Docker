@@ -1,0 +1,13 @@
+{
+  "name": "moviesApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/api/*",
+      "proxyUrl": "http://localhost:5000/api"
+    }
+  ]
+}

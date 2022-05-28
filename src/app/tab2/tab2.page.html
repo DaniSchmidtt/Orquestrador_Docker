@@ -1,0 +1,35 @@
+
+<ion-toolbar  color="primary">
+  <ion-title>Containers</ion-title>
+</ion-toolbar>
+<ion-content *ngIf="listaContainers.length > 0">
+<ion-list >
+  <ion-item *ngFor="let container of listaContainers">
+  <div class="movie_card" id="bright">
+    
+  <div class="info_section">
+    <div class="movie_header">
+      <h1>Nome: {{container.Names[0]}}</h1>
+      <h4>Status: {{container.State}}</h4>
+      <h4>{{container.Status}}</h4>
+      <span class="minutes" *ngIf="container.Ports.length > 0" >Porta: {{container.Ports[0].PrivatePort}}</span>
+      <p class="type">Imagem: {{container.Image}}</p>
+    </div>
+  
+  </div>
+  
+  <div class="blur_back bright_back"></div>
+</div>
+<ion-button fill="outline" *ngIf="container.State != 'running'" (click) = "play({container})">
+  <ion-icon slot="start" name="play"></ion-icon>
+   play </ion-button>
+   <ion-button fill="outline"  *ngIf="container.State == 'running'" (click) = "pausar({container})">
+    <ion-icon slot="end" name="pause"></ion-icon>
+     Pause </ion-button>
+     <ion-button fill="outline" (click) = "delete({container})">
+      <ion-icon slot="start" name="trash"></ion-icon>
+       delete </ion-button>
+</ion-item>
+
+</ion-list>
+</ion-content>
